@@ -1,10 +1,12 @@
 <?php
 /*********************************************************************************************
- * 模板引擎
+ * 模板引擎 此模板引擎类没有雨框架关联所以可以直接拿出来单独使用
  * 完成时间   2014年10月16日17:54:21
  * 模板引擎标签 <{}>  或者 <?php ?> 没写支持自定义标签，后续工作太杂了
  * 作者      侯成华
  * 邮箱      728443778@qq.com
+ * 修改时间   2015年3月30日15:52:15
+ * 内容      增加了对头部和尾部的支持  使用方法：在本框架中写一个控制器基类，把模板的头部和尾部进行初始化 然后其他控制器继承自改基类
  **********************************************************************************************/
 class template
 {
@@ -17,6 +19,24 @@ class template
     {
         $this->template=$template;
         $this->genhtml=$genhtml;
+    }
+    
+    /**
+     * 新增加的用于支持模板头部和尾部渲染的
+     * @param type $file
+     */
+    public function initHead($file)
+    {
+        $this->headfile= $file;
+    }
+    
+    /**
+     * 新增加的用于支持模板头部和尾部渲染的
+     * @param type $file
+     */
+    public function initFoot($file)
+    {
+        $this->footfile=  $file;
     }
     
     /**
@@ -80,7 +100,16 @@ class template
             ' } ?>',
             '<?php while${1} { ?>'
         );
-        if (!$this->compfile = preg_replace($pattern, $replace, $this->tempfile))
+        if(!empty($this->headfile))
+        {
+            $file=  file_get_contents($this->headfile);
+        }
+        $file.=$this->tempfile;
+        if(!empty($this->footfile))
+        {
+            $file.=file_get_contents($this->footfile);
+        }
+        if (!$this->compfile = preg_replace($pattern, $replace,$file ))
         {
             $this->logWrite("编译失败");
         }
@@ -168,6 +197,7 @@ class template
         }
         $this->init();
         $this->compile();
+        //似乎显得多余，但是为了避免标签的多重使用 还是加上这个
         extract($this->vars,EXTR_OVERWRITE);
         eval('?>' . $this->compfile);
     }
@@ -187,12 +217,20 @@ class template
         extract($this->vars,EXTR_OVERWRITE);
         try
         {
+            if(!empty($this->headfile))
+            {
+                include($this->headfile);
+            }           
             include($file);
+            if(!empty($this->footfile))
+            {
+                include($this->footfile);
+            }
         }
-        catch (Exception $e)
-         {
+        catch (Exception $e) 
+        {
             $this->logWrite($e->getmessage());
-         }
+        }
     }
     
     /**
@@ -281,6 +319,7 @@ class template
      * 如果要自定义左右标签后 后续工作太杂了
      * 算了
      */
+    
     /**
      *模板引擎左标签
      * @var string
@@ -292,5 +331,17 @@ class template
      * @var string
      */
     protected $righttag;
+    
+    /**
+     * 新增加的模板头部内容文件路径
+     * @var string 
+     */
+    protected $headfile='';
+    
+    /**
+     * 新增加的模板尾部内容文件路径
+     * @var type 
+     */
+    protected $footfile='';
 }
 
