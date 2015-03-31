@@ -450,7 +450,7 @@ class Model
         }
         $sql = substr($sql, 0, -1);
         $sql .= ' WHERE ' . $this->ar_where . $this->ar_order . $this->ar_limit;
-        $stmt = $this->db->prepare($sql);
+        $stmt = $this->dnhandler->prepare($sql);
         if ($stmt === false) 
         {
             $this->onError('Get stmt failed,sql maybe invalid:' . $sql);
@@ -585,7 +585,7 @@ class Model
      */
     public function last_id() 
     {
-        return $this->db->lastInsertId();
+        return $this->dnhandler->lastInsertId();
     }
     
     /**
@@ -703,7 +703,7 @@ class Model
     {
         try 
         {
-            $stmt = $this->db->query($sql);
+            $stmt = $this->dnhandler->query($sql);
             if ($stmt === false)
            {
                 if ($this->dbhandler->trans_started)
@@ -721,7 +721,7 @@ class Model
             {
                 $this->dbhandler->trans_ok = false;
             }
-            $info = $this->db->errorInfo();
+            $info = $this->dnhandler->errorInfo();
             $this->onError('SQL:' . $sql . '[' . $info[1] . ']' . $info[2] . '[' . $ex->getCode() . ']' . $ex->getMessage() . $this->end_line);
         }
     }
