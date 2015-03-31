@@ -3,6 +3,8 @@
  * 时间 2015年3月27日17:19:24
  * 作者 侯成华
  * 邮箱 728443778@qq.com
+ * 修改时间  2015年3月30日09:33:23
+ * 内容     增加对模板头部和尾部渲染的支持
  * 
  ********************************************************************************************************************/
 class Controller
@@ -24,6 +26,23 @@ class Controller
         
     }
     
+    /**
+     * 渲染模板头部的初始化
+     * @param type $file
+     */
+    public function initHead($file=null)
+    {
+        $this->tpl->initHead($file);
+    }
+    
+    /**
+     * 渲染模板尾部的初始化
+     * @param type $file
+     */
+    public function initFoot($file=null)
+    {
+        $this->tpl->initFoot($file);
+    }
     /**
      * 载入模型
      * @param string $name
