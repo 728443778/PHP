@@ -333,13 +333,13 @@ class template
     protected $righttag;
     
     /**
-     * 新增加的模板头部内容文件路径
+     * 新增加的模板头部内容
      * @var string 
      */
     protected $headfile='';
     
     /**
-     * 新增加的模板尾部内容文件路径
+     * 新增加的模板尾部内容
      * @var type 
      */
     protected $footfile='';

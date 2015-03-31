@@ -1,14 +1,9 @@
 <?php
-class indexController extends Controller
+class indexController extends baseController
 {
-    public function init()
-    {
-        //echo "init";
-    }
     public function index()
     {
-        $this->assign('content',"O(∩_∩)O哈哈~O(∩_∩)O~");
-        $this->display('index.html');
+        //$this->display('index.html');
     }
     public function valicode()
     {
