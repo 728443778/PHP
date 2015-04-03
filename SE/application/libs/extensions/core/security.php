@@ -6,7 +6,7 @@ class Security
      * @param type $str 待加密字符串
      * @param type $ext 加密后缀
      */
-    public static function md5($str,$ext="md5")
+    public static function common($str,$ext="md5")
     {
         return md5(md5($str.$ext));
     }
@@ -156,6 +156,15 @@ class Security
         $newstr = array("<", ">", "<", ">");
         $value = str_replace($newstr, $badstr, $value);
         return stripslashes($value);
+    }
+
+    /**
+     *
+     *
+     */
+    public static function intval($str)
+    {
+        return intval($str);
     }
 
 }

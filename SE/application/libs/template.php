@@ -48,7 +48,7 @@ class template
         $this->logOpen();
         if (!file_exists($this->template)) 
         {
-            $this->logWrite("模板文件不存在");
+            $this->logWrite($this->template."模板文件不存在");
             return ;
         }
         $this->tempfile = file_get_contents($this->template);

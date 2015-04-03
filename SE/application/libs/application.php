@@ -11,7 +11,7 @@
 final class Application
 {
     /**
-     * 打印消息，根据配置 选择是否打印到终端显示
+     * 打印消息，根据配置 选择是否打印到浏览器显示
      * @param $msg
      */
     public function showlog($msg)
