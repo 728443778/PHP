@@ -130,7 +130,7 @@ class Dispatch
      */
     public function getDirModules()
     {
-        return $this->_dirModels;
+        return $this->_dirModules;
     }
     
     /**

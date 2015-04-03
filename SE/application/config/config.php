@@ -39,7 +39,10 @@ return ['db' => ['dsn' => 'mysql:dbname=partner;host=192.168.61.2;port=3306',
             'controllers'=>'',
             'cache'=>'',
         ],
-        'ext' => true,
+        'ext' => [
+            'extensions'=>true,          //是否启用扩展库
+            'config'=>true,             //使用使用模块配置文件
+        ],
         'valicode'=>[
             'filesource'=>false,   //配置验证码文件源，如果验证码来自于文件，请填写验证码文件源的完整路径，包括文件名，文件内容格式为','分隔或者'\n'分隔，格式只能有一种
             'length'=>5,            //验证码的位数  ，不填写，默认

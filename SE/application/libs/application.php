@@ -93,7 +93,6 @@ final class Application
         }
         $this->_readConfig($config);
         $this->_initSystem();
-        $this->getDispatcher()->init();
         spl_autoload_register('Application::autoload');
         $this->_run();     
     }
@@ -125,12 +124,12 @@ final class Application
         {
             if(file_exists($dirControllers. DIRECTORY_SEPARATOR .$fileName. '.php'))
             {
-                require_once($dirControllers. DIRECTORY_SEPARATOR .$fileName. '.php');
+                require($dirControllers. DIRECTORY_SEPARATOR .$fileName. '.php');
                 return ;
             }
             if(file_exists($dirModels . DIRECTORY_SEPARATOR .$fileName. '.php'))
             {
-                require_once($dirModels. DIRECTORY_SEPARATOR .$fileName. '.php');
+                require($dirModels. DIRECTORY_SEPARATOR .$fileName. '.php');
                 return ;
             }
         } 
@@ -138,21 +137,21 @@ final class Application
         {
             if(file_exists($dirModels. DIRECTORY_SEPARATOR .$fileName. '.php'))
             {
-                require_once($dirModels. DIRECTORY_SEPARATOR .$fileName. '.php');
+                require($dirModels. DIRECTORY_SEPARATOR .$fileName. '.php');
                 return ;
             }
             if(file_exists($dirModules.DIRECTORY_SEPARATOR. $module.DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR .$fileName. '.php'))
             {
-                require_once($dirModels.DIRECTORY_SEPARATOR. $module .DIRECTORY_SEPARATOR. 'controllers' . DIRECTORY_SEPARATOR .$fileName. '.php');
+                require($dirModules.DIRECTORY_SEPARATOR. $module .DIRECTORY_SEPARATOR. 'controllers' . DIRECTORY_SEPARATOR .$fileName. '.php');
                 return ;
             }
             if(file_exists($dirModules.DIRECTORY_SEPARATOR. $module .DIRECTORY_SEPARATOR.'models' . DIRECTORY_SEPARATOR .$fileName. '.php'))
             {
-                require_once($dirModules.DIRECTORY_SEPARATOR. $module .DIRECTORY_SEPARATOR.'models' . DIRECTORY_SEPARATOR .$fileName. '.php');
+                require($dirModules.DIRECTORY_SEPARATOR. $module .DIRECTORY_SEPARATOR.'models' . DIRECTORY_SEPARATOR .$fileName. '.php');
                 return ;
             }
         }
-        if (Application::getInstance()->getConfig()['system']['ext'] == true)
+        if (Application::getInstance()->getConfig()['system']['ext']['extensions'] == true)
         {
             if(file_exists($dirLibs. DIRECTORY_SEPARATOR . 'extensions' .$fileName. '.php'))
             {
@@ -217,6 +216,16 @@ final class Application
     private function _initSystem()
     {
         $this->_initReport();
+        $this->_initDispatch();
+        if($this->getConfig()['system']['ext']['config'])
+        {
+            $module=$this->getDispatcher()->getModule();
+            if($module!=$this->getConfig()['system']['default']['module'])
+            {
+                $config=include($this->getDispatcher()->getDirModules().DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php');
+                $this->_config=  array_merge($this->_config,$config);
+            }
+        }
     }
     
     /**

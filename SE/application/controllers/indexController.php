@@ -3,7 +3,7 @@ class indexController extends baseController
 {
     public function index()
     {
-        //$this->display('index.html');
+        $this->display('index.html');
     }
     public function valicode()
     {
