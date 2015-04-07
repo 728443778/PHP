@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * Class Model
+ */
 class Model
 {
     /**
@@ -32,6 +36,7 @@ class Model
      */
     public function field($v)
     {
+        //strpos  查找字符串首次出现的位置，返回在字符串中首次出现的数字位置
         if (strpos($v, '*') !== false)
         {
             return $v;
@@ -259,8 +264,12 @@ class Model
     {
         $this->dbhandler->trans_stop();
     }
-    
-    public function cache_start() {
+
+    /**
+     *
+     */
+    public function cache_start()
+    {
         $this->cache_ar = 1;
     }
     
@@ -399,6 +408,7 @@ class Model
         $result = $this->procStmt($stmt, PDO::FETCH_COLUMN);
         return empty($result) ? 0 : (int)$result[0];
     }
+
     /**
      * 查询是否有符合条件的记录
      * @param type $table
@@ -450,7 +460,7 @@ class Model
         }
         $sql = substr($sql, 0, -1);
         $sql .= ' WHERE ' . $this->ar_where . $this->ar_order . $this->ar_limit;
-        $stmt = $this->dnhandler->prepare($sql);
+        $stmt = $this->dbhandler->prepare($sql);
         if ($stmt === false) 
         {
             $this->onError('Get stmt failed,sql maybe invalid:' . $sql);
@@ -500,7 +510,7 @@ class Model
 
     /**
      * 
-     * @param type $table 
+     * @param type $table  这里应该是表的全名
      * @param type $set  
      * @param type $multi
      * @param type $replace
@@ -563,7 +573,7 @@ class Model
         {
             $sql .= substr($dupSql, 0, -1);
         }
-        $stmt = $this->db->prepare($sql);
+        $stmt = $this->dbhandler->prepare($sql);
         if ($stmt === false) 
         {
             $this->onError('Get stmt failed,sql maybe invalid:' . $sql);
@@ -585,7 +595,7 @@ class Model
      */
     public function last_id() 
     {
-        return $this->dnhandler->lastInsertId();
+        return $this->dbhandler->lastInsertId();
     }
     
     /**
@@ -614,28 +624,6 @@ class Model
     public function onError($msg)
     {
         echo __CLASS__.':'.$msg;
-    }
-    
-    /**
-     * 
-     * @param type $model
-     * @param type $config
-     * @return type
-     */
-    public static function getInstance(&$model = -1, $config = array())
-    {
-        if (!self::$instance)
-        {
-            self::$instance = new self($config);
-        }
-        if ($model !== -1)
-        {
-            $model = self::$instance;
-        }
-        else
-        {
-            return self::$instance;
-        }
     }
 
     /**
@@ -703,7 +691,7 @@ class Model
     {
         try 
         {
-            $stmt = $this->dnhandler->query($sql);
+            $stmt = $this->dbhandler->query($sql);
             if ($stmt === false)
            {
                 if ($this->dbhandler->trans_started)
@@ -721,7 +709,7 @@ class Model
             {
                 $this->dbhandler->trans_ok = false;
             }
-            $info = $this->dnhandler->errorInfo();
+            $info = $this->dbhandler->errorInfo();
             $this->onError('SQL:' . $sql . '[' . $info[1] . ']' . $info[2] . '[' . $ex->getCode() . ']' . $ex->getMessage() . $this->end_line);
         }
     }
@@ -796,6 +784,10 @@ class Model
     const ORDER_DESC = ' DESC ';
     const ORDER_ASC = ' ASC ';
 
+    /**
+     * 表名
+     * @var string
+     */
     protected $table;
     
     /**
@@ -819,5 +811,4 @@ class Model
     private $cache_having = 0;
     private $cache_ar = 0;
     protected $end_line = "\r\n";
-    private static $instance;
 }

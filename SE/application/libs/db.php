@@ -11,7 +11,7 @@ class DB extends PDO
      * @return type
      * @throws Exception
      */
-    public static function getInstance(&$db=-1,$config=null)
+    public static function getInstance($db=-1,$config=null)
     {
         if(!(self::$_instance instanceof  DB))
         {
@@ -100,6 +100,13 @@ class DB extends PDO
     {
         ;
     }
+
+    /**
+     * @param $dsn
+     * @param $username
+     * @param $passwd
+     * @param array $options
+     */
     private function __construct($dsn, $username, $passwd, $options=array())
     {
         parent::__construct($dsn, $username, $passwd, $options);
