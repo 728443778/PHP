@@ -11,7 +11,7 @@ class DB extends PDO
      * @return type
      * @throws Exception
      */
-    public static function getInstance($db=-1,$config=null)
+    public static function getInstance($config=array())
     {
         if(!(self::$_instance instanceof  DB))
         {
@@ -48,10 +48,6 @@ class DB extends PDO
                 }
                 self::$_instance->query('set names '.$config['charset']);
             }
-        }
-        if($db!==-1)
-        {
-            $db=self::$_instance;
         }
         return self::$_instance;
     }
@@ -107,7 +103,7 @@ class DB extends PDO
      * @param $passwd
      * @param array $options
      */
-    private function __construct($dsn, $username, $passwd, $options=array())
+    public function __construct($dsn, $username, $passwd, $options=array())
     {
         parent::__construct($dsn, $username, $passwd, $options);
     }

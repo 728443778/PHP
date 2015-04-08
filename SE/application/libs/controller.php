@@ -48,21 +48,21 @@ class Controller
      * @param string $name
      * @return void
      */
-    public function load_model($name=null)
+    public function loadModel($name=null)
     {
         if(empty($name))
         {
             $name=__CLASS__;
             $model=$name.'Model';
             $this->$name=new $model();
-            $this->$name->table=$name;
+            $this->$name->setTable($name);
             return ;
         }
         else
         {
             $model=$name.'Model';
             $this->$name=new $model();
-            $this->$name->table=$name;
+            $this->$name->setTable($name);
             return ;
         }
     }
@@ -249,7 +249,7 @@ class Controller
     {
         return $this->_viewPath;
     }
-    
+
     /**
      *模板实例
      * @var template 

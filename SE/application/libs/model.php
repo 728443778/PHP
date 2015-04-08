@@ -11,8 +11,9 @@ class Model
      */
     public function __construct($config=array()) 
     {
-        DB::getInstance($this->dbhandler,$config);
-        $this->tbprefix=  empty($config)?$config['tbprefix']:Application::getInstance()->getConfig()['db']['tbprefix'];
+        $this->dbhandler=DB::getInstance($this->dbhandler,$config);
+        $this->tbprefix= empty($config)?Application::getInstance()->getConfig()['db']['tbprefix']:$config['tbprefix'];
+        $this->debug=Application::getInstance()->getConfig()['system']['debug'] ? true : false;
     }
 
     /*
@@ -330,7 +331,25 @@ class Model
     }
 
     /**
-     * 获取第一行第一列
+     * 获得表前缀
+     * @return string
+     */
+    public function getTbprefix()
+    {
+        return $this->tbprefix;
+    }
+
+    /**
+     * 设置表前缀
+     * @param $tbprefix string
+     */
+    public function setTbprefix($tbprefix)
+    {
+        $this->tbprefix=$tbprefix;
+    }
+
+    /**
+     * 获取第一行数据
      * @param type $table
      * @return boolean
      */
@@ -380,7 +399,33 @@ class Model
         $this->clearAr();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    
+
+    /**
+     * 返回查询的结果集
+     * @param string null $table
+     * @return Resource
+     */
+    public function getAll($table=null)
+    {
+        if($table===null)
+        {
+            $table = $this->table ($this->table);
+        }
+        $stmt = $this->prepareGet($table);
+        if($stmt===false)
+        {
+            $this->clearAr();
+            return false;
+        }
+        if($this->queryStmt($stmt)===false)
+        {
+            $this->clearAr();
+            return false;
+        }
+        $this->clearAr();
+        return $stmt->fetchAll();
+    }
+
     /**
      * 查询结果集行数
      * @param type $table
@@ -617,18 +662,30 @@ class Model
         return $sql;
     }
 
+    public function Debug($flage=false)
+    {
+        $this->debug=$flage;
+    }
+
     /**
      * 
      * @param type $msg
      */
     public function onError($msg)
     {
-        echo __CLASS__.':'.$msg;
+        if($this->debug)
+        {
+            echo __CLASS__.':'.$msg;
+        }
+        else
+        {
+            error_log(__CLASS__.':'.$msg);
+        }
     }
 
     /**
-     * 
-     * @param type $table
+     * 对表名进行预处理，返回PDOStatement对象 这里的表名是自定义的全表名
+     * @param string $table
      * @return boolean
      */
     private function prepareGet($table)
@@ -767,6 +824,23 @@ class Model
     }
 
     /**
+     * 获取表的名字
+     * @return string
+     */
+    public function getTable()
+    {
+        return $this->table;
+    }
+
+    /**
+     * 设置表的名字 不包含前缀
+     * @param string $name
+     */
+    public function setTable($name)
+    {
+        $this->table=$name;
+    }
+    /**
      * PDO对象
      * @var type 
      */
@@ -791,16 +865,51 @@ class Model
     protected $table;
     
     /**
-     *
-     * @var type 
+     * select 头
+     * @var string
      */
     private $ar_select = '*';
+
+    /**
+     * where部分
+     * @var string
+     */
     private $ar_where = '1';
+
+    /**
+     * 绑定的元素集合
+     * @var array
+     */
     private $ar_where_bind = array();
+
+    /**
+     * join部分
+     * @var string
+     */
     private $ar_join = '';
+
+    /**
+     * order部分
+     * @var string
+     */
     private $ar_order = '';
+
+    /**
+     * limit部分
+     * @var string
+     */
     private $ar_limit = '';
+
+    /**
+     * group部分
+     * @var string
+     */
     private $ar_group = '';
+
+    /**
+     * having部分
+     * @var string
+     */
     private $ar_having = '';
     private $cache_select = 0;
     private $cache_where = 0;
@@ -811,4 +920,11 @@ class Model
     private $cache_having = 0;
     private $cache_ar = 0;
     protected $end_line = "\r\n";
+
+    /**
+     * 是否处于调试模式
+     * 调试模式打开，会直接在终端输出错误信息，否则记录php系统日志
+     * @var bool
+     */
+    protected $debug=true;
 }
