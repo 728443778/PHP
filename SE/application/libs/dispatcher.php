@@ -14,6 +14,7 @@ class Dispatch
         /*
        $this->_action=NULL;
        $this->_request_uri=NULL;
+       php版本大于5.4才能使用这种获取配置的方式
          * */
         $this->_parameters = array();
         $this->_module = Application::getInstance()->getConfig()['system']['default']['module'];
@@ -362,7 +363,6 @@ class Dispatch
     private function path_info($path_info)
     {
         $array=explode('/',$path_info);
-        var_dump($array);
         if(empty($array))
         {
             return ;
@@ -420,7 +420,12 @@ class Dispatch
     {
         $this->_parameters=  isset($_GET)?$_GET:$_POST;
     }
-    private function __clone() {
+
+    /**
+     *
+     */
+    private function __clone()
+    {
         ;
     }
     
