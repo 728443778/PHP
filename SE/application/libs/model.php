@@ -371,7 +371,7 @@ class Model
             return false;
         }
         $this->clearAr();
-        return $stmt->fetch(PDO::FETCH_COLUMN);
+        return $stmt->fetch(PDO::FETCH_BOTH);
     }
     
     /**

@@ -57,8 +57,8 @@ class Dispatch
      */
     public function init()
     {
-        $this->_initDir();
         $this->_initRouter();
+        $this->_initDir();
         $this->_initParameters();
     }
     
@@ -405,11 +405,22 @@ class Dispatch
         $dirModules=Application::getInstance()->getConfig()['system']['dir']['modules'];
         $dirViews=Application::getInstance()->getConfig()['system']['dir']['views'];
         $this->_dirApp=     Application::getInstance()->getConfig()['system']['dir']['application'];
+        if($this->getModule()!=Application::getInstance()->getConfig()['system']['default']['module'])
+        {
+            $this->_dirLibs=empty($dirLibs)?$this->_dirApp.DIRECTORY_SEPARATOR.'libs':$dirLibs;
+            $this->_dirModules=empty($dirModules)?$this->_dirApp.DIRECTORY_SEPARATOR.'modules':$dirModules;
+            $this->_dirCache= $this->_dirApp.DIRECTORY_SEPARATOR.$this->_module.DIRECTORY_SEPARATOR.'cache';
+            $this->_dirControllers=$this->_dirModules.DIRECTORY_SEPARATOR.$this->_module.DIRECTORY_SEPARATOR.'controllers';
+            $this->_dirModels=array('0'=>empty($dirModels)?$this->_dirApp.DIRECTORY_SEPARATOR.'models':$dirModels,
+                '1'=>$this->_dirModules.DIRECTORY_SEPARATOR.$this->_module.DIRECTORY_SEPARATOR.'models');
+            $this->_dirViews=$this->_dirModules.DIRECTORY_SEPARATOR.'views';
+            return ;
+        }
+        $this->_dirLibs=  empty($dirLibs)?$this->_dirApp.DIRECTORY_SEPARATOR.'libs':$dirLibs;
+        $this->_dirModules=  empty($dirModules)?$this->_dirApp.DIRECTORY_SEPARATOR.'modules':$dirModules;
         $this->_dirCache=  empty($dirCache)?$this->_dirApp.DIRECTORY_SEPARATOR.'cache': $dirCache;
         $this->_dirControllers=  empty($dirControllers)?$this->_dirApp.DIRECTORY_SEPARATOR.'controllers':$dirControllers;
-        $this->_dirLibs=  empty($dirLibs)?$this->_dirApp.DIRECTORY_SEPARATOR.'libs':$dirLibs;
         $this->_dirModels=  empty($dirModels)?$this->_dirApp.DIRECTORY_SEPARATOR.'models':$dirModels;
-        $this->_dirModules=  empty($dirModules)?$this->_dirApp.DIRECTORY_SEPARATOR.'modules':$dirModules;
         $this->_dirViews=  empty($dirViews)?$this->_dirApp.DIRECTORY_SEPARATOR.'views':$dirViews;
     }
     

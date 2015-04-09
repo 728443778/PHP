@@ -19,6 +19,8 @@ class template
     {
         $this->template=$template;
         $this->genhtml=$genhtml;
+        $this->errorlog=Application::getInstance()->getConfig()['system']['template']['errorlog'];
+        $this->logOpen();
     }
     
     /**
@@ -45,7 +47,10 @@ class template
      */
     public function init()
     {
-        $this->logOpen();
+        if(!$this->handleLog)
+        {
+            $this->logOpen();
+        }
         if (!file_exists($this->template)) 
         {
             $this->logWrite($this->template."模板文件不存在");
@@ -238,7 +243,7 @@ class template
      */
     protected function logOpen() 
     {
-        $this->handleLog = fopen($this->errlog, "a");
+        $this->handleLog = fopen($this->errorlog, "a");
         if(!$this->handleLog)
         {
             error_log("fail to open error.log");
