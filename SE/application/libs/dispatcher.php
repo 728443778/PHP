@@ -57,9 +57,9 @@ class Dispatch
      */
     public function init()
     {
+        $this->_initParameters();
         $this->_initRouter();
         $this->_initDir();
-        $this->_initParameters();
     }
     
     /**
@@ -386,8 +386,10 @@ class Dispatch
             {
                 for($i=4;$i<$num;$i+=2)
                 {
-                    $this->_parameters[$array[i]]=$array[$i+1];
+                    $this->_parameters[$array[$i]]=$array[$i+1];
                 }
+                unset($i);
+                return ;
             }
         }
     }
@@ -413,7 +415,7 @@ class Dispatch
             $this->_dirControllers=$this->_dirModules.DIRECTORY_SEPARATOR.$this->_module.DIRECTORY_SEPARATOR.'controllers';
             $this->_dirModels=array('0'=>empty($dirModels)?$this->_dirApp.DIRECTORY_SEPARATOR.'models':$dirModels,
                 '1'=>$this->_dirModules.DIRECTORY_SEPARATOR.$this->_module.DIRECTORY_SEPARATOR.'models');
-            $this->_dirViews=$this->_dirModules.DIRECTORY_SEPARATOR.'views';
+            $this->_dirViews=$this->_dirModules.DIRECTORY_SEPARATOR.$this->_module.DIRECTORY_SEPARATOR.'views';
             return ;
         }
         $this->_dirLibs=  empty($dirLibs)?$this->_dirApp.DIRECTORY_SEPARATOR.'libs':$dirLibs;

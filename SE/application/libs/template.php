@@ -243,10 +243,14 @@ class template
      */
     protected function logOpen() 
     {
+        if(empty($this->errorlog))
+        {
+            return ;
+        }
         $this->handleLog = fopen($this->errorlog, "a");
         if(!$this->handleLog)
         {
-            error_log("fail to open error.log");
+            error_log("Tempalte:fail to open error.log");
             return ;
         }
         return ;

@@ -224,6 +224,7 @@ class Controller
             Dispatch::getInstance()->setPara($para);
         }
         Application::getInstance()->_run();
+        return ;
     }
     
     /**

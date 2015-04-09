@@ -93,12 +93,12 @@ final class Application
         }
         $this->_readConfig($config);
         $this->_initSystem();
-        spl_autoload_register('Application::autoload');
-        $this->_run();     
+        $this->_run();
     }
     
     public function _run()
     {
+        spl_autoload_register('Application::autoload');
         $controllerName= $this->getDispatcher()->getController();
         $action=$this->getDispatcher()->getAction();
         $action=rtrim($action);
@@ -135,9 +135,9 @@ final class Application
         } 
         else
         {
-            if(file_exists($dirModels. DIRECTORY_SEPARATOR .$fileName. '.php'))
+            if(file_exists($dirModels[0]. DIRECTORY_SEPARATOR .$fileName. '.php'))
             {
-                require($dirModels. DIRECTORY_SEPARATOR .$fileName. '.php');
+                require($dirModels[0]. DIRECTORY_SEPARATOR .$fileName. '.php');
                 return ;
             }
             if(file_exists($dirModules.DIRECTORY_SEPARATOR. $module.DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR .$fileName. '.php'))
@@ -145,9 +145,9 @@ final class Application
                 require($dirModules.DIRECTORY_SEPARATOR. $module .DIRECTORY_SEPARATOR. 'controllers' . DIRECTORY_SEPARATOR .$fileName. '.php');
                 return ;
             }
-            if(file_exists($dirModules.DIRECTORY_SEPARATOR. $module .DIRECTORY_SEPARATOR.'models' . DIRECTORY_SEPARATOR .$fileName. '.php'))
+            if(file_exists($dirModels[1]. DIRECTORY_SEPARATOR .$fileName. '.php'))
             {
-                require($dirModules.DIRECTORY_SEPARATOR. $module .DIRECTORY_SEPARATOR.'models' . DIRECTORY_SEPARATOR .$fileName. '.php');
+                require($dirModels[1]. DIRECTORY_SEPARATOR .$fileName. '.php');
                 return ;
             }
         }
@@ -207,7 +207,7 @@ final class Application
      */
     private function _readConfig($config)
     {
-        $this->_config=  require_once($config);
+        $this->_config=  require($config);
     }
     
     /**
@@ -223,6 +223,7 @@ final class Application
             if($module!=$this->getConfig()['system']['default']['module'])
             {
                 $config=include($this->getDispatcher()->getDirModules().DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php');
+                $config=$config?$config:array();
                 $this->_config=  array_merge($this->_config,$config);
             }
         }
