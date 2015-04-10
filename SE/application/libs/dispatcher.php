@@ -427,11 +427,11 @@ class Dispatch
     }
     
     /**
-     * 
+     * 合并所有的get参数 和post参数 如果参数有冲突，已post覆盖get参数
      */
     private function _initParameters()
     {
-        $this->_parameters=  isset($_GET)?$_GET:$_POST;
+        $this->_parameters=  array_merge($_GET,$_POST);
     }
 
     /**

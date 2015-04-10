@@ -93,6 +93,7 @@ final class Application
         }
         $this->_readConfig($config);
         $this->_initSystem();
+        require(Dispatch::getInstance()->getDirLibs().DIRECTORY_SEPARATOR.'functions.php');
         $this->_run();
     }
     
