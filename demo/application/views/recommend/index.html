@@ -1,0 +1,75 @@
+<section class="main animated fadeInDown">
+    <div class="main-box">
+        <p class="rb-row"><input type="text" id="username" placeholder="称呼或姓名：如，成先生" class="input" value="" /></p>
+        <p class="rb-row"><input type="tel" id="phone1" placeholder="手机号码" class="input" value="" /></p>
+        <p class="rb-row"><span style="color:red;" id="sjexist"></span></p>
+        <p class="rb-row rb-select">
+            <select id="floor" name="floor" class="select">
+                <option value="">意向楼盘</option>
+                <option value="太平洋彼岸">太平洋彼岸</option>
+                <option value="天府花园">天府花园</option>
+                <option value="阳光西南案">阳光西南案</option>
+                <option value="打完卡拉多久啊">打完卡拉多久啊</option>
+                <option value="低洼大">低洼大</option>
+                <option value="瓦达瓦">瓦达瓦</option>
+                <option value="瓦达瓦">瓦达瓦</option>
+                <option value="发福为">发福为</option>
+                <option value="瓦达瓦">瓦达瓦</option>
+                <option value="低洼大">低洼大</option>
+                <option value="达瓦">达瓦</option>
+                <option value="低洼大">低洼大</option>
+                <option value="好冷的天啊">好冷的天啊</option>
+                <option value="今天天气好冷啊">今天天气好冷啊</option>
+                <option value="今天天气好冷啊">今天天气好冷啊</option>
+                <option value="今天天气好球冷">今天天气好球冷</option>
+                <option value="阳光北岸">阳光北岸</option>
+                <option value="阳光西岸">阳光西岸</option>
+                <option value="阳光南岸">阳光南岸</option>
+                <option value="大宗房产">大宗房产</option>
+                <option value="测试主题">测试主题</option>
+                <option value="金色乐府">金色乐府</option>
+                <option value="金域缇香">金域缇香</option>
+                <option value="天逸">天逸</option>
+                <option value="龙山">龙山</option>
+                <option value="公园五号">公园五号</option>
+                <option value="九墅">九墅</option>
+            </select>
+            <i class="icon-down-open-big"></i>
+        </p>
+        <p class="rb-row"><input type="input" id="selorderTime" placeholder="预约日期" class="input" value="" onclick="new Calendar().show(this);" readonly="readonly" /></p>
+        <p class="rb-row rb-select">
+            <select id="selorderTime2" name="selorderTime2" class="select">
+                <option value="">请选择预约时段</option>
+                <option value="10:30">10:30</option>
+                <option value="11:00">11:00</option>
+                <option value="12:00">12:00</option>
+                <option value="13:00">13:00</option>
+                <option value="14:00">14:00</option>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+                <option value="18:00">18:00</option>
+                <option value="19:00">19:00</option>
+            </select>
+            <i class="icon-down-open-big"></i>
+        </p>
+        <p class="rb-row"><input type="text" id="remark" placeholder="备注" class="input" value="" /></p>
+        <div class="recommend-tips">
+            <h6>提示</h6>
+            <p>请务必提交真实的客户信息，若多次提交虚假信息，您的账号会被禁用。</p>
+        </div>
+        <p class="rb-submit"><input type="submit" value="马上推荐" class="btn" id="J_submitRec"/></p>
+    </div>
+</section>
+<aside class="recommend-pop">
+    <div class="recommend-box">
+        <h1 class="recommend-title"></h1>
+        <div class="recommend-icon"></div>
+        <div class="recommend-text">
+            <p>如果客户成交，您将获得佣金！</p>
+            <p class="user-get"></p>
+        </div>
+        <a href="index.php?c=customer&amp;" class="recommend-submit"><i class="recommend-ok"></i></a>
+    </div>
+</aside>
+<script src="./public/js/main.js"></script>

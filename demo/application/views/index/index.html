@@ -1,0 +1,422 @@
+<style id="loading-style">html,body{width:100%;height:100%; overflow: hidden;}</style>
+<section class="user-loader" style="background:url(./public/images/upfiles/201409/23/d1716a42ce902731.jpg);background-size: 100% 100%;">
+	<i class="icon-spin4 animate-spin"></i>
+</section>
+<div class="ad"><img src="./public/images/upfiles/201409/21/7e8b99a1eb4d8907.png" alt="" /></div>
+<section class="main animated">
+	<div class="main-box">
+        <?php if($_SESSION['user_id']){ ?>
+        <div class="home-info border-box fn-clear">
+            <figure class="figure-box">
+                <img src="./public/images/www/header.png" alt="" />
+            </figure>
+            <h5><?php echo $_SESSION['username'];?>&nbsp;</h5>
+            <h5><a href="index.php?c=login&a=logout&" >注销</a></h5>
+            <div class="user-info">
+                <label>总佣金</label>
+                <p><i class="icon icon-money"></i><span>0</span></p>
+            </div>
+            <div class="info-border"></div>
+            <div class="user-info">
+                <label>推荐人数</label>
+                <p><i class="icon icon-users"></i><span>0</span></p>
+            </div>
+            <div class="user-ad">
+                <p><a href="javascript:void(0)" id="dialog">分享有礼</a></p>
+            </div>
+            <a href="index.php?c=usercp&amp;" title="设置" class="jjr-setting"><i class="icon-setting"></i></a>
+        </div>
+        <?php }else { ?>
+				<div class="unregister">
+			<figure><a href="index.php?c=register&amp;"><img src="./public/images/www/unregister.jpg" alt="" /></a></figure>
+		</div>
+        <?php } ?>
+				<ul class="home-nav fn-clear">
+			<li class="nav-recommend"><a href="<?php if($_SESSION['user_id']){ ?>index.php?c=recommend&amp<?php }else{ ?>index.php?c=register&amp;<?php } ?>" title="我要推荐">我要推荐<label>hot</label><br /><span>Recommend</span></a></li>
+			<li class="nav-rule"><a href="<?php if($_SESSION['user_id']){ ?>index.php?c=customer&amp<?php }else{ ?>index.php?c=login&amp;"<?php } ?> title="我的客户">我的客户<br /><span>Client</span></a></li>
+			<li class="nav-commission"><a href="<?php if($_SESSION['user_id']){ ?>index.php?c=commission&amp<?php }else{ ?>index.php?c=login&amp;<?php }?>" title="我的佣金"><p>我的佣金<br /><span>Commission</span></p></a></li>
+			<li class="nav-rule-detail"><a href="index.php?c=msg&amp;id=2&amp;" title="活动细则">活动细则<br /><span>Rule</span></a></li>
+		</ul>
+		<div class="sale-box">
+			<h6>在售项目</h6>
+			<div class="floor-box">
+												<a href="./public/cache/33.html" class="floor-detail" title="太平洋彼岸" target="_blank">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/24/ea9014f4a3fa0ca4.jpg" alt="太平洋彼岸" /></figure>
+                <div class="floor">
+                	<h5>太平洋彼岸</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>总房款的0.1%</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>客户到访10元</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="./public/cache/32.html" class="floor-detail" title="天府花园" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/24/dde80ee0b1fca7d0.jpg" alt="天府花园" /></figure>
+                <div class="floor">
+                	<h5>天府花园</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>总房款的0.1%</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>客户到访10元</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="./public/cache/31.html" class="floor-detail" title="阳光西南案" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/24/dde80ee0b1fca7d0.jpg" alt="阳光西南案" /></figure>
+                <div class="floor">
+                	<h5>阳光西南案</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>总房款的0.1%</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>客户到访10元</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="./public/cache/30.html" class="floor-detail" title="打完卡拉多久啊" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/24/a66c663f285cd820.jpg" alt="打完卡拉多久啊" /></figure>
+                <div class="floor">
+                	<h5>打完卡拉多久啊</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>低洼大</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>瓦达瓦</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="c29.html" class="floor-detail" title="低洼大" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/24/dde80ee0b1fca7d0.jpg" alt="低洼大" /></figure>
+                <div class="floor">
+                	<h5>低洼大</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>瓦达瓦</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>达瓦的</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="c28.html" class="floor-detail" title="瓦达瓦" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/24/dde80ee0b1fca7d0.jpg" alt="瓦达瓦" /></figure>
+                <div class="floor">
+                	<h5>瓦达瓦</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>达瓦大</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>达瓦</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="c27.html" class="floor-detail" title="瓦达瓦" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/24/a66c663f285cd820.jpg" alt="瓦达瓦" /></figure>
+                <div class="floor">
+                	<h5>瓦达瓦</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>娃</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>达瓦</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="c26.html" class="floor-detail" title="发福为" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/24/dde80ee0b1fca7d0.jpg" alt="发福为" /></figure>
+                <div class="floor">
+                	<h5>发福为</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>风扇风扇</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>风扇</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="c25.html" class="floor-detail" title="瓦达瓦" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/24/dde80ee0b1fca7d0.jpg" alt="瓦达瓦" /></figure>
+                <div class="floor">
+                	<h5>瓦达瓦</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>达瓦</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>达瓦</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="c24.html" class="floor-detail" title="低洼大" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/24/a66c663f285cd820.jpg" alt="低洼大" /></figure>
+                <div class="floor">
+                	<h5>低洼大</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>达瓦大</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>达瓦</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="c23.html" class="floor-detail" title="达瓦" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/24/a66c663f285cd820.jpg" alt="达瓦" /></figure>
+                <div class="floor">
+                	<h5>达瓦</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>达瓦大</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>达瓦的</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="c22.html" class="floor-detail" title="低洼大" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/24/a66c663f285cd820.jpg" alt="低洼大" /></figure>
+                <div class="floor">
+                	<h5>低洼大</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>达瓦达瓦</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>达瓦</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="c21.html" class="floor-detail" title="好冷的天啊" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/24/a66c663f285cd820.jpg" alt="好冷的天啊" /></figure>
+                <div class="floor">
+                	<h5>好冷的天啊</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>总房款的0.1%</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>客户到访10元</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="c20.html" class="floor-detail" title="今天天气好冷啊" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/24/a66c663f285cd820.jpg" alt="今天天气好冷啊" /></figure>
+                <div class="floor">
+                	<h5>今天天气好冷啊</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>总房款的0.1%</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>客户到访10元</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="c19.html" class="floor-detail" title="今天天气好冷啊" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/23/d1716a42ce902731.jpg" alt="今天天气好冷啊" /></figure>
+                <div class="floor">
+                	<h5>今天天气好冷啊</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>总房款的0.1%</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>客户到访10元</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="c18.html" class="floor-detail" title="今天天气好球冷" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/24/ea9014f4a3fa0ca4.jpg" alt="今天天气好球冷" /></figure>
+                <div class="floor">
+                	<h5>今天天气好球冷</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>总房款的0.1%</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>到访10元</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="c16.html" class="floor-detail" title="阳光北岸" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201412/26/f2dd0718cfdb5e51.jpg" alt="阳光北岸" /></figure>
+                <div class="floor">
+                	<h5>阳光北岸</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>总房款的0.1%</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>到访20块</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="http://www.baidu.com" class="floor-detail" title="阳光西岸" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/24/e54137ce73ba1542.jpg" alt="阳光西岸" /></figure>
+                <div class="floor">
+                	<h5>阳光西岸</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>总房款的0.1%</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>用户到访1000元</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="c14.html" class="floor-detail" title="阳光南岸" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/24/e54137ce73ba1542.jpg" alt="阳光南岸" /></figure>
+                <div class="floor">
+                	<h5>阳光南岸</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>总房款的0.1%</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>客户到访10元</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="www.12345.com" class="floor-detail" title="大宗房产" target="_blank">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/24/a66c663f285cd820.jpg" alt="大宗房产" /></figure>
+                <div class="floor">
+                	<h5>大宗房产</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>0.1%的总房款</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>用户看房可获得10元</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="http://www.baidu.com" class="floor-detail" title="测试主题" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/23/d1716a42ce902731.jpg" alt="测试主题" /></figure>
+                <div class="floor">
+                	<h5>测试主题</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>1000</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>测试激励</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="http://xinjiang.juzhen.net/2014/partner2014/huafu.shtml" class="floor-detail" title="金色乐府" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/20/7b95e0b8b93dec48.jpg" alt="金色乐府" /></figure>
+                <div class="floor">
+                	<h5>金色乐府</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>2000</span><br /></div>
+                    </div>
+										                </div>
+                </a>
+								<a href="http://xinjiang.juzhen.net/2014/partner2014/tixiang.shtml" class="floor-detail" title="金域缇香" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/20/883a83f6fdb2137c.jpg" alt="金域缇香" /></figure>
+                <div class="floor">
+                	<h5>金域缇香</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>4.0‰的总房款</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>到访10.00元</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="http://xinjiang.juzhen.net/2014/partner2014/guoji.shtml" class="floor-detail" title="天逸" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/20/6f2bbc69a1ec1889.jpg" alt="天逸" /></figure>
+                <div class="floor">
+                	<h5>天逸</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>1.0%的总房款</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>到访10.00元</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="http://xinjiang.juzhen.net/2014/partner2014/lanqiao.shtml" class="floor-detail" title="龙山" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/20/e4ee64d8c040f46a.jpg" alt="龙山" /></figure>
+                <div class="floor">
+                	<h5>龙山</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>1.0%的总房款</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>到访10.00元</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="http://xinjiang.juzhen.net/2014/partner2014/zygy.shtml" class="floor-detail" title="公园五号" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/20/d0665f4ab2638e28.jpg" alt="公园五号" /></figure>
+                <div class="floor">
+                	<h5>公园五号</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>1.0%的总房款</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>到访10.00元</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+								<a href="c4.html" class="floor-detail" title="九墅" target="_self">
+                <figure class="floor-img"><img src="./public/images/upfiles/201409/20/a7581617757c4d5d.jpg" alt="九墅" /></figure>
+                <div class="floor">
+                	<h5>九墅</h5>
+					                    <div class="award fn-clear">
+                    	<label class="award-title">佣金</label>
+						<div class="award-list"><span>4.0‰的总房款</span><br /></div>
+                    </div>
+										                    <div class="award fn-clear">
+                    		<label class="award-title">激励</label>
+							<div class="award-list"><span>到访10.00元</span><br /></div>
+                    </div>
+					                </div>
+                </a>
+				 
+				    
+			</div>
+		</div>
+	</div>
+</section>

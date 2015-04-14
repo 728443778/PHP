@@ -1,0 +1,18 @@
+<!DOCTYPE html public "-//w3c//dtd xhtml 1.0 transitional//en" "http://www.w3.org/tr/xhtml1/dtd/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>后台管理</title>
+</head>
+<!-- 注意，框架一定要放在body之前，不然会失效 -->
+<frameset rows="40,*" framespacing="0" frameborder="NO" border="0">
+    <frame name="frame_banner" id="frame_banner" scrolling="no" frameborder="0" noresize target="frame_left" src="<?php echo createUrl('top','index','admin');?>" style="overflow:hidden;">
+    <frameset cols="150,*" framespacing="0" frameborder="NO" border="0">
+        <frame name="frame_left" id="frame_left" target="frame_right" scrolling="no" frameborder="0" noresize src="about:blank" style="overflow:hidden;">
+        <frame name="frame_right" id="frame_right" src="about:blank" scrolling="yes" frameborder="0" style="overflow-x:hidden">
+    </frameset>
+</frameset>
+<noframes>
+    <body>此网页使用了框架，但您的浏览器不支持框架。部分免费空间可能无法正常使用本系统</body>
+</noframes>
+</html>

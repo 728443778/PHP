@@ -1,0 +1,15 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>后台管理</title>
+    <script type="text/javascript">
+    </script>
+    <link href="<?php echo WEB_PUBLIC;?>/css/admin/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="<?php echo WEB_PUBLIC;?>/js/admin/jquery.js"></script>
+    <script type="text/javascript" src="<?php echo WEB_PUBLIC;?>/js/admin/global.js"></script>
+    <!-- if($sys_app->control_name && file_exists(ROOT."images/admin/".$sys_app->control_name.".js")) -->
+    <script type="text/javascript" src="<?php echo WEB_PUBLIC;?>/js/admin/<?php echo Dispatch::getInstance()->getController();?>.js"></script>
+    <!-- end -->
+</head>
+<body>

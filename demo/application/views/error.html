@@ -1,0 +1,20 @@
+<section class="main animated fadeInDown">
+    <div class="main-box">
+        <div class="rule-detail border-box">
+            <div style="text-align:center"><?php echo $msg ; ?></div>
+            <?php if($error_url){ ?>
+            <p class="tc"><a href="<?php echo $error_url; ?>">请点击我直接跳转</a></p>
+            <?php } ?>
+        </div>
+    </div>
+</section>
+<?php if($error_url){ ?>
+<script type="text/javascript">
+    var micro_time = "<?php echo $micro_time; ?>";
+    window.setTimeout("trefresh()",micro_time);
+    function trefresh()
+    {
+        direct("<?php echo $error_url; ?>");
+    }
+</script>
+<?php } ?>

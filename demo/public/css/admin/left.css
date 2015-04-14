@@ -1,0 +1,8 @@
+body{margin:0px;padding:0px;background: #0A586F;}
+a{text-decoration: none;}
+a:hover{color: #ff0000;text-decoration: underline;}
+ol,ul{margin:0px;padding-left:8px;padding-top:5px;list-style-type:none;font-size:16px;}
+.son{padding-left:15px;font-size:12px;line-height:20px;height:20px;color:#FFF;}
+.son a{color: #F6F6F6;blr:expression(this.onFocus=this.blur());}
+.click{padding-left:15px;color:#000;background:#E3F5FB;border-top:1px #000 solid;border-bottom:1px #000 solid;border-left:1px #000 solid;line-height:20px;height:20px;}
+.click a { color:red; }
