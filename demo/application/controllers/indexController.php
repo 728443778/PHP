@@ -8,7 +8,6 @@ class indexController extends baseController
     public function valicode()
     {
         valicode::genValiCode();
-        echo "valicode";
     }
     public function testCache()
     {
